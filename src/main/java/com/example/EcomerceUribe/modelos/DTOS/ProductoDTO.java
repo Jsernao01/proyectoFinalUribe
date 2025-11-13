@@ -1,49 +1,34 @@
-package com.example.EcomerceUribe.modelos;
+package com.example.EcomerceUribe.modelos.DTOS;
 
 import com.example.EcomerceUribe.ayudas.CategoriaProducto;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.*;
 
-@Entity
-@Table(name="productos")
-public class Producto {
+public class ProductoDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(name = "name", nullable = false, length = 120)
     private String nombre;
-
-    @Column(name = "photo", length = 255)
     private String fotografia;
-
-    @Column(name = "description", length = 500)
     private String descripcion;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "category", nullable = false, length = 30)
     private CategoriaProducto categoria;
-
-    @Column(name = "unit_price", nullable = false)
     private Integer precioUnitario;
-
-    @Column(name = "brand", nullable = false, length = 80)
     private String marca;
-
-    @Column(name = "has_discount", nullable = false)
     private boolean aplicaDescuento;
+    private Integer pedidoId;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "fk_pedido", referencedColumnName = "id")
-    @JsonBackReference(value = "relacionpedidoproducto")
-    private Pedido pedido;
-
-    public Producto() {
+    public ProductoDTO() {
     }
 
-    public Producto(Integer id) {
+    public ProductoDTO(Integer id, String nombre, String fotografia, String descripcion,
+                        CategoriaProducto categoria, Integer precioUnitario, String marca,
+                        boolean aplicaDescuento, Integer pedidoId) {
         this.id = id;
+        this.nombre = nombre;
+        this.fotografia = fotografia;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.precioUnitario = precioUnitario;
+        this.marca = marca;
+        this.aplicaDescuento = aplicaDescuento;
+        this.pedidoId = pedidoId;
     }
 
     public Integer getId() {
@@ -110,11 +95,11 @@ public class Producto {
         this.aplicaDescuento = aplicaDescuento;
     }
 
-    public Pedido getPedido() {
-        return pedido;
+    public Integer getPedidoId() {
+        return pedidoId;
     }
 
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
+    public void setPedidoId(Integer pedidoId) {
+        this.pedidoId = pedidoId;
     }
 }
