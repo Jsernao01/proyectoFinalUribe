@@ -1,44 +1,21 @@
-package com.example.EcomerceUribe.modelos;
+package com.example.EcomerceUribe.modelos.DTOS;
 
 import com.example.EcomerceUribe.ayudas.Departamentos;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
+public class ClienteDTO {
 
-@Entity
-@Table(name = "clientes")
-public class Cliente {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(name = "address", nullable = false, length = 150)
     private String direccion;
-
-    @Column(name = "rating")
     private Double calificacion;
-
-    @Column(name = "payment_reference", nullable = false, length = 80)
     private String referenciaPago;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "department", nullable = false, length = 40)
     private Departamentos departamento;
-
-    @Column(name = "city", nullable = false, length = 60)
     private String ciudad;
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference(value = "relacioncliente-pedido")
-    private List<Pedido> pedidos = new ArrayList<>();
-
-    public Cliente() {
+    public ClienteDTO() {
     }
 
-    public Cliente(Integer id, String direccion, Double calificacion, String referenciaPago, Departamentos departamento, String ciudad) {
+    public ClienteDTO(Integer id, String direccion, Double calificacion, String referenciaPago,
+                      Departamentos departamento, String ciudad) {
         this.id = id;
         this.direccion = direccion;
         this.calificacion = calificacion;
@@ -93,13 +70,5 @@ public class Cliente {
 
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
-    }
-
-    public List<Pedido> getPedidos() {
-        return pedidos;
-    }
-
-    public void setPedidos(List<Pedido> pedidos) {
-        this.pedidos = pedidos;
     }
 }

@@ -40,7 +40,8 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Integer id, String nombres, String correo, String contraseña, EstadosUsuario estado, LocalDate fechaNacimiento, TipoDocumento tipoDocumento, String documento) {
+    public Usuario(Integer id, String nombres, String correo, String contraseña, EstadosUsuario estado,
+                   LocalDate fechaNacimiento, TipoDocumento tipoDocumento, String documento) {
         this.id = id;
         this.nombres = nombres;
         this.correo = correo;
@@ -115,4 +116,3 @@ public class Usuario {
         this.documento = documento;
     }
 }
-

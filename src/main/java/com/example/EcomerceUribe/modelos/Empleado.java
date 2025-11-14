@@ -68,4 +68,12 @@ public class Empleado {
     public void setSede(Sedes sede) {
         this.sede = sede;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 }
